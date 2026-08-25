@@ -7,11 +7,11 @@
 #
 # Einrichtung (aus dem Projekt-Wurzelverzeichnis):
 #   uv venv --python 3.13 .venv-ragas
-#   uv pip install --python .venv-ragas -r Code/07_RAG/requirements_ragas.txt
+#   uv pip install --python .venv-ragas -r 07_RAG/requirements_ragas.txt
 #
 # Danach in VS Code fuer 60_rag_eval.py den Kernel ".venv-ragas" auswaehlen
 # oder das Skript direkt starten:
-#   uv run --python .venv-ragas Code/07_RAG/60_rag_eval.py
+#   uv run --python .venv-ragas 07_RAG/60_rag_eval.py
 
 ragas>=0.4.3
 langchain<1.0

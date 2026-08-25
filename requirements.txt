@@ -1,0 +1,75 @@
+# Pakete fuer die Codebeispiele zum Buch "Generative KI mit Python" (2. Auflage)
+#
+# Installation (virtuelle Umgebung vorher anlegen und aktivieren):
+#   pip install -r requirements.txt
+#
+# Diese Datei spiegelt die direkten Abhaengigkeiten aus pyproject.toml.
+# Wer mit uv arbeitet, braucht sie nicht: "uv sync" installiert dieselben
+# Pakete in den in uv.lock festgeschriebenen Versionen.
+#
+# Benoetigt Python 3.13.
+#
+# Zwei Beispiele brauchen eine eigene Umgebung und sind hier NICHT enthalten:
+#   - 07_RAG/60_rag_eval.py            -> 07_RAG/requirements_ragas.txt
+#   - 08_AgenticSystems/{pydantic_ai,openai_agents,ai_security,crewAI}
+#                                      -> eigene pyproject.toml im Ordner
+# Details dazu in Abschnitt 7 der README.md.
+
+
+# --- Grundlagen (alle Kapitel) ---------------------------------------------
+python-dotenv>=1.2.2          # API-Schluessel aus der .env-Datei laden
+ipykernel>=7.3.0              # #%%-Zellen in VS Code ausfuehren
+pyperclip>=1.11.0             # Prompts in die Zwischenablage kopieren (Kap. 5, 8)
+
+# --- Datenanalyse und Visualisierung ---------------------------------------
+pandas>=3.0.5
+matplotlib>=3.11.1
+seaborn>=0.13.2
+scikit-learn>=1.9.0
+
+# --- Kapitel 3: Vortrainierte Netze ---------------------------------------
+transformers>=5.14.1          # Modelle und Pipelines von Hugging Face
+torch>=2.13.0                 # Rechen-Backend fuer transformers
+accelerate>=1.14.0            # Verteilen grosser Modelle auf CPU/GPU
+diffusers>=0.39.0             # Bilderzeugung (30_text_to_image.py)
+sentencepiece>=0.2.2          # Tokenizer fuer Uebersetzungsmodelle
+datasets>=5.0.1               # Datensaetze von Hugging Face laden
+
+# --- Kapitel 4 und 5: LLMs und Prompt Engineering -------------------------
+openai>=2.52.0                # OpenAI-API
+langchain>=1.3.14             # Kern von LangChain
+langchain-classic>=1.0.8      # Klassische Chains und Hilfsklassen
+langchain-community>=0.4.2    # Community-Anbindungen
+langchain-openai>=1.4.1       # Chat-Modelle und Embeddings von OpenAI
+langchain-openrouter>=0.2.7   # Modelle anderer Anbieter ueber OpenRouter
+langchain-ollama>=1.1.0       # Lokale Modelle ueber Ollama (70_chat_ollama.py)
+langchain-text-splitters>=1.1.2
+
+# --- Kapitel 6: Vektordatenbanken -----------------------------------------
+sentence-transformers>=5.7.0  # Embeddings lokal berechnen
+langchain-chroma>=1.1.0       # Chroma als lokaler Vektorspeicher
+langchain-faiss>=0.1.1        # FAISS als Alternative
+langchain-pinecone>=0.2.13    # Pinecone als Vektorspeicher in der Cloud
+langchain-experimental>=0.4.2 # SemanticChunker (30_semantic_chunking.py)
+
+# --- Kapitel 7: RAG --------------------------------------------------------
+rank-bm25>=0.2.2              # BM25 fuer die Hybrid-Suche (25_BM25_TFIDF.py)
+langchain-arxiv>=0.1.0        # arXiv als Datenquelle
+langchain-arxiv-retriever>=1.0.0
+
+# --- Kapitel 8: Agentensysteme --------------------------------------------
+agent-framework-core>=1.13.0  # Microsoft Agent Framework
+agent-framework-openai>=1.12.0
+agent-framework-orchestrations>=1.0.2
+langchain-tavily>=0.2.18      # Websuche als Werkzeug fuer Agenten
+wikipedia>=1.4.0              # Wikipedia als Werkzeug fuer Agenten
+agentops>=0.4.21              # Agenten beobachten und auswerten
+logfire[system-metrics]>=4.40.0
+
+# --- Kapitel 9: MCP -------------------------------------------------------
+mcp[cli]>=2.0.0               # Model Context Protocol (server.py)
+
+# --- Kapitel 11: Deployment -----------------------------------------------
+streamlit>=1.61.1             # Web-Oberflaeche
+fastapi>=0.141.1              # REST-API
+uvicorn>=0.52.0               # Server fuer FastAPI
