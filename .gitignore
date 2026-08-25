@@ -1,0 +1,11 @@
+.env
+
+
+.venv/
+.venv-ragas/
+*.pyc
+*.bin
+*.sqlite3
+.agents/
+.claude/
+.opencode/

@@ -1,0 +1,12 @@
+[project]
+name = "openai-agents-examples"
+version = "0.1.0"
+description = "Beispiele zum OpenAI Agents SDK (Kapitel 8)"
+requires-python = ">=3.13,<3.14"
+# eigene Umgebung, weil openai-agents mcp<2 benoetigt,
+# das Hauptprojekt (Kapitel 9) aber mcp>=2 verwendet
+dependencies = [
+    "openai-agents>=0.19.4",
+    "python-dotenv>=1.2.2",
+    "wikipedia>=1.4.0",
+]

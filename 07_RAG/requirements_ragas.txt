@@ -1,0 +1,23 @@
+# Separate Umgebung fuer die RAG-Evaluierung (60_rag_eval.py).
+#
+# Grund: ragas 0.4.x importiert `langchain_community.chat_models.vertexai`,
+# das es nur in langchain-community 0.3.x gibt. langchain-experimental 0.4.2
+# (fuer SemanticChunker in Kapitel 06) verlangt dagegen langchain-community
+# >= 0.4.2. Beide Pakete koennen also nicht in derselben Umgebung liegen.
+#
+# Einrichtung (aus dem Projekt-Wurzelverzeichnis):
+#   uv venv --python 3.13 .venv-ragas
+#   uv pip install --python .venv-ragas -r Code/07_RAG/requirements_ragas.txt
+#
+# Danach in VS Code fuer 60_rag_eval.py den Kernel ".venv-ragas" auswaehlen
+# oder das Skript direkt starten:
+#   uv run --python .venv-ragas Code/07_RAG/60_rag_eval.py
+
+ragas>=0.4.3
+langchain<1.0
+langchain-community<0.4
+langchain-core<1.0
+langchain-openai<1.0
+datasets>=4.0.0
+python-dotenv>=1.2.2
+ipykernel>=7.3.0
