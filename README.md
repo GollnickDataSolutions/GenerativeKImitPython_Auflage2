@@ -23,7 +23,11 @@ Ausführen mit einigen Gigabyte Download und entsprechend Platz auf der Festplat
 
 ---
 
-## 2. Repository klonen
+## 2. Repository klonen (optional)
+
+Das Repo müssen Sie nur klonen, wenn Sie die Kursmaterialien nicht als ZIP-Datei heruntergeladen haben.
+
+Sie können das Repo über den folgenden Befehl auf ihr lokales System klonen.
 
 ```bash
 git clone https://github.com/GollnickDataSolutions/GenerativeKImitPython_Auflage2.git
