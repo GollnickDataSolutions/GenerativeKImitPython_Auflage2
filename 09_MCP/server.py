@@ -17,6 +17,11 @@ mcp = MCPServer(name="LocalMcpServer")
 @mcp.tool()
 def list_files(folder_path: str) -> list[str]:
     """List files in a folder"""
+    Args:
+        folder_path: path to the folder
+    Returns:
+        list of files in the folder
+    """
     return os.listdir(folder_path)
 
 @mcp.tool()
