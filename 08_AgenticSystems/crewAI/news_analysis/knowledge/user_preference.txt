@@ -1,0 +1,8 @@
+Preferences for the generated report:
+
+- The audience consists of technically interested readers without deep domain expertise.
+- Explain technical terms briefly the first time they appear.
+- Keep sections short: three to five paragraphs per main topic.
+- Use a factual, sober tone; avoid marketing language and superlatives.
+- State uncertainty explicitly when a claim was only rated as partly reliable.
+- Cite sources as markdown links, not as bare URLs.

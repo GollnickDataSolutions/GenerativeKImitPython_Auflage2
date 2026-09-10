@@ -1,0 +1,55 @@
+{
+  "name": "news-analysis",
+  "agents": ["researcher", "fact_checker", "analyst", "writer"],
+  "tasks": [
+    {
+      "name": "information_gathering_task",
+      "description": "Conduct thorough research about {topic}. Focus on developments that are relevant as of {current_year_month}. Use the search tool and only report findings you can trace back to a concrete article.",
+      "expected_output": "A list of 10 bullet points covering the most relevant information about {topic}. Every bullet point ends with the full source URL in the form (Source: <url>).",
+      "agent": "researcher"
+    },
+    {
+      "name": "fact_checking_task",
+      "description": "Verify the research findings for accuracy and reliability. Look up each claim independently instead of trusting the wording of the previous report. Judge the credibility of the cited source as well.",
+      "expected_output": "The same 10 bullet points about {topic}, each keeping its source URL and extended by a verdict: reliable, partly reliable or unreliable, plus one sentence of justification.",
+      "agent": "fact_checker",
+      "context": ["information_gathering_task"]
+    },
+    {
+      "name": "context_analysis_task",
+      "description": "Analyze the fact-checked findings and identify the main topics. Ignore findings that were marked as unreliable.",
+      "expected_output": "A list of the main topics of {topic}. For each topic, note which of the fact-checked bullet points it is based on.",
+      "agent": "analyst",
+      "context": ["fact_checking_task"]
+    },
+    {
+      "name": "report_assembly_task",
+      "description": "Expand each identified main topic into a full section of a report. Make the report detailed and include all relevant information. Cite the source URLs from the fact-checked findings in every paragraph.",
+      "expected_output": "A fully fledged report with the main topics, each as a full section, formatted as markdown. Every paragraph references at least one source URL.",
+      "agent": "writer",
+      // The fact-checked findings carry the source URLs, the analysis carries
+      // the structure - the writer needs both to cite anything.
+      "context": ["fact_checking_task", "context_analysis_task"],
+      "markdown": true,
+      "output_file": "report.md"
+    }
+  ],
+  "process": "sequential",
+  "verbose": true,
+  // Off by default: short-term memory would add embedding calls per run and
+  // persist state between runs, which makes the example harder to reproduce.
+  "memory": false,
+  "knowledge_sources": [
+    {
+      "source_type": "text_file",
+      // Paths are resolved relative to the knowledge/ directory.
+      "file_paths": ["user_preference.txt"]
+    }
+  ],
+  // Defaults - override at runtime, e.g.:
+  //   crewai run --input topic="quantum computing" --input current_year_month=2026-09
+  "inputs": {
+    "current_year_month": "2026-08",
+    "topic": "artificial intelligence"
+  }
+}
