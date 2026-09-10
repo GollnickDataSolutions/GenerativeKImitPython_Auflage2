@@ -1,0 +1,6 @@
+[server]
+# no browser is opened on the server, and no usage stats are collected
+headless = true
+
+[browser]
+gatherUsageStats = false
