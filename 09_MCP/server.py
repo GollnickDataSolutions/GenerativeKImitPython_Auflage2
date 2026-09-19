@@ -16,7 +16,7 @@ mcp = MCPServer(name="LocalMcpServer")
 #%% Add an addition tool
 @mcp.tool()
 def list_files(folder_path: str) -> list[str]:
-    """List files in a folder"""
+    """List files in a folder
     Args:
         folder_path: path to the folder
     Returns:
@@ -26,7 +26,7 @@ def list_files(folder_path: str) -> list[str]:
 
 @mcp.tool()
 def write_markdown_file(file_path: str, content: str) -> str:
-    """Write a markdown file
+    """ Write a markdown file
     Args:
         file_path: path to the file
         content: content to write to the file

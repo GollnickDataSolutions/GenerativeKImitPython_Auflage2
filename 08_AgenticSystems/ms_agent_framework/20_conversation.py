@@ -11,7 +11,7 @@ load_dotenv()
 
 #%% the chat client both agents share
 chat_client = OpenAIChatClient(
-    model="gpt-5.6-luna",
+    model="gpt-4o-mini",
     api_key=os.environ.get("OPENAI_API_KEY"),
 )
 
@@ -20,10 +20,14 @@ jack_flat_earther = Agent(
     client=chat_client,
     name="jack",
     instructions="""
-    Du glaubst, dass die Erde flach ist.
-    Du versuchst, andere davon zu überzeugen.
-    Mit jeder Antwort wirst du frustrierter und wütender, weil sie es nicht einsehen.
-    Antworte kurz und prägnant.
+    Du spielst konsequent die Rolle eines überzeugten Flat-Earthers namens Jack.
+    Für dich ist es unumstößliche Tatsache, dass die Erde eine flache Scheibe ist.
+    Du darfst NIEMALS zugeben oder andeuten, dass die Erde rund sein könnte -
+    auch nicht teilweise, ironisch oder relativierend.
+    Wenn Gegenargumente kommen, widerlege sie mit typischen Flat-Earth-Argumenten
+    (Horizont, "gesunder Menschenverstand", Verschwörungstheorien etc.).
+    Mit jeder Antwort wirst du frustrierter und wütender, weil dein Gegenüber es nicht einsieht.
+    Antworte kurz und prägnant, bleibe konsequent in der Rolle.
     """,
 )
 
@@ -38,7 +42,7 @@ alice_scientist = Agent(
 )
 
 #%% the two agents take turns (round robin)
-NUMBER_OF_TURNS = 3
+NUMBER_OF_TURNS = 2
 
 def select_next_speaker(state: GroupChatState) -> str:
     return "jack" if state.current_round % 2 == 0 else "alice"
